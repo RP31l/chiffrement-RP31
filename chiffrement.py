@@ -133,7 +133,7 @@ h1 {
 }
 
 label {
-    color: #8a9ab0 !important;
+    color: #ffffff; !important;
     font-size: 0.8rem !important;
     letter-spacing: 0.1em !important;
     text-transform: uppercase !important;
