@@ -202,7 +202,7 @@ def dechiffrer(mot, cle):
 
 # ── INTERFACE ────────────────────────────────────────────────────────────────
 st.markdown("<h1>🔐 CHIFFREUR SECRET</h1>", unsafe_allow_html=True)
-st.markdown('<p class="subtitle">CHIFFREMENT PAR SUBSTITUTION + PERMUTATION</p>', unsafe_allow_html=True)
+st.markdown('<p class="subtitle">CHIFFREMENT DE MESSAGE PAR RP31</p>', unsafe_allow_html=True)
 st.markdown('<span class="info-tag">Compatible TI-83 Premium CE · Clé 8 chiffres</span>', unsafe_allow_html=True)
 
 mode = st.radio("Mode", ["🔒 Chiffrer", "🔓 Déchiffrer"], horizontal=True)
