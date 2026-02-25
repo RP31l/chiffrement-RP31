@@ -247,12 +247,9 @@ if st.button("⚡ EXÉCUTER"):
             <div>{resultat}</div>
         </div>
         """, unsafe_allow_html=True)
+        st.code(resultat, language=None)
         col1, col2 = st.columns(2)
-        with col1:
-            st.markdown(f'''<button onclick="navigator.clipboard.writeText("{resultat}").then(()=>{{this.innerText="✅ COPIE !";setTimeout(()=>{{this.innerText="📋 COPIER"}},2000)}})"
-                style="width:100%;background:linear-gradient(135deg,#0d2b45,#1a1040);border:1px solid #ffffff;color:#ffffff;font-family:Oxanium,sans-serif;font-weight:700;font-size:0.95rem;letter-spacing:0.1em;padding:0.75rem;border-radius:6px;cursor:pointer;">📋 COPIER</button>''', unsafe_allow_html=True)
         with col2:
-            st.markdown(f'''<a href="https://wa.me/?text={resultat}" target="_blank"
-                style="display:block;background:linear-gradient(135deg,#0a2a0a,#0d3b0d);border:1px solid #25d366;color:#25d366;font-family:Oxanium,sans-serif;font-weight:700;font-size:0.95rem;letter-spacing:0.1em;padding:0.75rem;border-radius:6px;text-decoration:none;text-align:center;">💬 WHATSAPP</a>''', unsafe_allow_html=True)
-        st.markdown(f'''<a href="mailto:?subject=Message chiffre&body={resultat}"
-            style="display:block;margin-top:0.75rem;background:linear-gradient(135deg,#0d2b45,#1a1040);border:1px solid #ffffff;color:#ffffff;font-family:Oxanium,sans-serif;font-weight:700;font-size:0.95rem;letter-spacing:0.1em;padding:0.75rem;border-radius:6px;text-decoration:none;text-align:center;">📧 ENVOYER PAR MAIL</a>''', unsafe_allow_html=True)
+            st.markdown(f'<a href="https://wa.me/?text={resultat}" target="_blank" style="display:block;background:linear-gradient(135deg,#0a2a0a,#0d3b0d);border:1px solid #25d366;color:#25d366;font-family:Oxanium,sans-serif;font-weight:700;font-size:0.95rem;letter-spacing:0.1em;padding:0.75rem;border-radius:6px;text-decoration:none;text-align:center;">💬 WHATSAPP</a>', unsafe_allow_html=True)
+        with col1:
+            st.markdown(f'<a href="mailto:?subject=Message chiffre&body={resultat}" style="display:block;background:linear-gradient(135deg,#0d2b45,#1a1040);border:1px solid #ffffff;color:#ffffff;font-family:Oxanium,sans-serif;font-weight:700;font-size:0.95rem;letter-spacing:0.1em;padding:0.75rem;border-radius:6px;text-decoration:none;text-align:center;">📧 MAIL</a>', unsafe_allow_html=True)
