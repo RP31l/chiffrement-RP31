@@ -160,7 +160,7 @@ label {
 """, unsafe_allow_html=True)
 
 # ── FONCTIONS ────────────────────────────────────────────────────────────────
-alp = "abcdefghijklmnopqrstuvwxyz"
+alp = "abcdefghijklmnopqrstuvwxyz "
 
 def generer_indices(mot, cle_int):
     indices = list(range(len(mot)))
@@ -176,12 +176,10 @@ def chiffrer(mot, cle):
     indices = generer_indices(mot, int(cle))
     res = [""] * len(mot)
     for i, l in enumerate(mot):
-        if l == " ":
-            res[i] = " "
-        elif l.lower() in alp:
+        if l.lower() in alp:
             dec = int(cle[i % 8])
             idx = alp.index(l.lower())
-            nl = alp[(idx + dec) % 26]
+            nl = alp[(idx + dec) % 27]
             res[indices[i]] = nl
         else:
             res[indices[i]] = l
@@ -196,7 +194,7 @@ def dechiffrer(mot, cle):
         elif mot[indices[i]].lower() in alp:
             dec = int(cle[i % 8])
             idx = alp.index(mot[indices[i]].lower())
-            nl = alp[(idx - dec) % 26]
+            nl = alp[(idx - dec) % 27]
             res[i] = nl
         else:
             res[i] = mot[indices[i]]
