@@ -45,7 +45,7 @@ h1 {
 
 .subtitle {
     text-align: center;
-    color: #5a6a7a;
+    color: #ffffff;
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.85rem;
     letter-spacing: 0.2em;
@@ -71,7 +71,7 @@ h1 {
 
 .result-label {
     font-size: 0.7rem;
-    color: #5a6a7a;
+    color: #ffffff;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     margin-bottom: 0.5rem;
@@ -94,7 +94,7 @@ h1 {
     background: #0d1b2a !important;
     border: 1px solid #1e3a5f !important;
     border-radius: 6px !important;
-    color: #e0e0e0 !important;
+    color: #ffffff; !important;
     font-family: 'Share Tech Mono', monospace !important;
 }
 
