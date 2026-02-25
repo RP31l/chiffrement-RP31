@@ -92,10 +92,14 @@ h1 {
 .stTextInput > div > div > input,
 .stSelectbox > div > div {
     background: #0d1b2a !important;
-    border: 1px solid #1e3a5f !important;
+    border: 1px solid #ffffff !important;
     border-radius: 6px !important;
-    color: #e0e0e0 !important;
+    color: #ffffff !important;
     font-family: 'Share Tech Mono', monospace !important;
+}
+
+.stTextInput > div > div > input::placeholder {
+    color: #ffffff99 !important;
 }
 
 .stTextInput > div > div > input:focus {
@@ -129,7 +133,7 @@ h1 {
     background: #0d1b2a;
     border-radius: 8px;
     padding: 0.5rem 1rem;
-    border: 1px solid #1e3a5f;
+    border: 1px solid #ffffff;
 }
 
 .stRadio label {
