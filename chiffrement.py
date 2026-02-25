@@ -45,7 +45,7 @@ h1 {
 
 .subtitle {
     text-align: center;
-    color: #ffffff;
+    color: #5a6a7a;
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.85rem;
     letter-spacing: 0.2em;
@@ -71,7 +71,7 @@ h1 {
 
 .result-label {
     font-size: 0.7rem;
-    color: #ffffff;
+    color: #5a6a7a;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     margin-bottom: 0.5rem;
@@ -94,7 +94,7 @@ h1 {
     background: #0d1b2a !important;
     border: 1px solid #1e3a5f !important;
     border-radius: 6px !important;
-    color: #ffffff; !important;
+    color: #e0e0e0 !important;
     font-family: 'Share Tech Mono', monospace !important;
 }
 
@@ -132,11 +132,26 @@ h1 {
     border: 1px solid #1e3a5f;
 }
 
+.stRadio label {
+    color: #ffffff !important;
+    font-size: 1rem !important;
+    letter-spacing: 0.1em !important;
+    font-weight: 600 !important;
+}
+
 label {
-    color: #ffffff; !important;
-    font-size: 0.8rem !important;
+    color: #ffffff !important;
+    font-size: 0.85rem !important;
     letter-spacing: 0.1em !important;
     text-transform: uppercase !important;
+}
+
+p, .stMarkdown p {
+    color: #ffffff !important;
+}
+
+.stTextInput > label, .stRadio > label {
+    color: #ffffff !important;
 }
 
 .divider {
