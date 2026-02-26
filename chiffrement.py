@@ -180,65 +180,65 @@ p, .stMarkdown p {
 
 # ── FONCTIONS ────────────────────────────────────────────────────────────────
 alp = "abcdefghijklmnopqrstuvwxyz "
+ALP_IDX = {c: i for i, c in enumerate(alp)}
+N_ALP = 27
 
-def generer_indices(mot, cle_int):
-    indices = list(range(len(mot)))
+def generer_indices(n, cle_int):
+    indices = list(range(n))
     seed(cle_int)
-    i = len(indices) - 1
+    i = n - 1
     while i > 0:
         j = randint(0, i)
         indices[i], indices[j] = indices[j], indices[i]
         i -= 1
     return indices
 
-def chiffrer(mot, cle):
-    indices = generer_indices(mot, int(cle))
-    res = [""] * len(mot)
+def chiffrer(mot, cle, taille_cle):
+    n = len(mot)
+    indices = generer_indices(n, int(cle))
+    res = [""] * n
     for i, l in enumerate(mot):
-        if l.lower() in alp:
-            dec = int(cle[i % 8])
-            idx = alp.index(l.lower())
-            nl = alp[(idx + dec) % 27]
-            res[indices[i]] = nl
+        c = l.lower()
+        if c in ALP_IDX:
+            dec = int(cle[i % taille_cle])
+            res[indices[i]] = alp[(ALP_IDX[c] + dec) % N_ALP]
         else:
             res[indices[i]] = l
     return "".join(res)
 
-def dechiffrer(mot, cle):
-    indices = generer_indices(mot, int(cle))
-    res = [""] * len(mot)
-    for i, l in enumerate(mot):
-        if mot[indices[i]] == " ":
-            res[i] = " "
-        elif mot[indices[i]].lower() in alp:
-            dec = int(cle[i % 8])
-            idx = alp.index(mot[indices[i]].lower())
-            nl = alp[(idx - dec) % 27]
-            res[i] = nl
+def dechiffrer(mot, cle, taille_cle):
+    n = len(mot)
+    indices = generer_indices(n, int(cle))
+    res = [""] * n
+    for i in range(n):
+        c = mot[indices[i]].lower()
+        if c in ALP_IDX:
+            dec = int(cle[i % taille_cle])
+            res[i] = alp[(ALP_IDX[c] - dec) % N_ALP]
         else:
             res[i] = mot[indices[i]]
     return "".join(res)
 
 # ── INTERFACE ────────────────────────────────────────────────────────────────
 st.markdown("<h1>🔐 CHIFFREUR SECRET</h1>", unsafe_allow_html=True)
-st.markdown('<p class="subtitle">SITE DE CRIPTAGE DE MESSAGE FAIT PAR RP31</p>', unsafe_allow_html=True)
-st.markdown('<span class="info-tag">Compatible TI-83 Premium CE · Clé 8 chiffres</span>', unsafe_allow_html=True)
+st.markdown('<p class="subtitle">CHIFFREMENT PAR SUBSTITUTION + PERMUTATION</p>', unsafe_allow_html=True)
 
 mode = st.radio("Mode", ["🔒 Chiffrer", "🔓 Déchiffrer"], horizontal=True)
-cle = st.text_input("Clé secrète (8 chiffres)", max_chars=8, placeholder="ex: 12345678")
+taille_cle = st.select_slider("Taille de la clé", options=[4, 6, 8, 10, 12], value=8)
+cle = st.text_input(f"Clé secrète ({taille_cle} chiffres)", max_chars=taille_cle, placeholder=f"ex: {'12345678'[:taille_cle]}")
 mot = st.text_input("Message", placeholder="Entrez votre message...")
 
 if st.button("⚡ EXÉCUTER"):
-    if len(cle) != 8 or not cle.isdigit():
-        st.markdown('<div class="error-box">⚠ La clé doit contenir exactement 8 chiffres !</div>', unsafe_allow_html=True)
+    if len(cle) != taille_cle or not cle.isdigit():
+        st.markdown(f'<div class="error-box">⚠ La clé doit contenir exactement {taille_cle} chiffres !</div>', unsafe_allow_html=True)
     elif not mot:
         st.markdown('<div class="error-box">⚠ Entrez un message !</div>', unsafe_allow_html=True)
     else:
         if "Chiffrer" in mode:
-            resultat = chiffrer(mot, cle)
+            resultat = chiffrer(mot, cle, taille_cle)
             label = "MESSAGE CHIFFRÉ"
         else:
-            resultat = dechiffrer(mot, cle)
+            resultat = dechiffrer(mot, cle, taille_cle)
             label = "MESSAGE DÉCHIFFRÉ"
 
         st.markdown(f"""
